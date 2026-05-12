@@ -66,13 +66,18 @@ export async function onRequest(context){
   const question=body.question||"请根据这张塔罗牌生成今日塔罗结果。";
 
   const apiKey=env.OPENAI_API_KEY;
-  const baseUrl=env.OPENAI_BASE_URL||"https://api.openai.com/v1";
-  const model=env.OPENAI_MODEL||"gpt-4o-mini";
+  const baseUrl=env.OPENAI_BASE_URL;
+  const model=env.OPENAI_MODEL;
 
-  if(!apiKey){
+  if(!apiKey||!baseUrl||!model){
     return new Response(JSON.stringify({
       ok:false,
-      error:"Missing OPENAI_API_KEY"
+      error:"Missing required environment variables",
+      missing:{
+        OPENAI_API_KEY:!apiKey,
+        OPENAI_BASE_URL:!baseUrl,
+        OPENAI_MODEL:!model
+      }
     }),{
       status:500,
       headers:{
@@ -223,7 +228,7 @@ export async function onRequest(context){
     cardName:cardName,
     cardNameZh:cardNameZh,
     position:position,
-    reading:reading||"【今日运势】今天适合放慢节奏，先整理手头事务，不急着做重大判断。\n\n【适合聊的话题】适合聊具体、轻松、容易接住的话题，比如今天见到的小事或一个明确的问题。\n\n【今日提醒】不要把一时的沉默理解成确定答案，先确认事实，再处理情绪。"
+    reading:reading
   }),{
     status:200,
     headers:{
