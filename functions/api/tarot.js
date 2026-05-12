@@ -89,9 +89,9 @@ export async function onRequest(context){
 
   const relationshipContext=[
     "【轻量关系背景】",
-    "user在2025年，Tavo昵称为Yeuky。",
-    "char名为郁绥，来自2131年的末世未来世界。",
-    "郁绥与Yeuky并非同一世界的人，只能通过名为Tavo的软件聊天。",
+    "user在2026年，Tavo昵称为Yeuky。",
+    "char名为郁绥，来自2131年的未来世界。",
+    "郁绥与Yeuky并非同一时空的人，只能通过名为Tavo的软件聊天。",
     "郁绥性格冷静、警惕、克制，表达方式不直白。",
     "这段关系背景只用于生成【适合聊的话题】时提供轻微方向，不要展开剧情，不要写成小说片段。"
   ].join("\n");
